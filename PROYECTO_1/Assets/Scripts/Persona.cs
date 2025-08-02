@@ -1,16 +1,25 @@
 using UnityEngine;
+using System;
 
-public class Persona : MonoBehaviour
+namespace packagePersona
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Serializable]
+    public class Persona
     {
-        Debug.Log("Estoy en el start");
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("Estoy en el update");
+        private string nameP;
+        private string mailP;
+        private string dirP;
+
+        public Persona()
+        {
+        }
+
+        public Persona(string nameP, string mailP, string dirP)
+        {
+            this.nameP = nameP;
+            this.mailP = mailP;
+            this.dirP = dirP;
+        }
     }
 }
