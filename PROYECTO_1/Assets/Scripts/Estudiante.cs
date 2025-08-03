@@ -1,16 +1,27 @@
 using UnityEngine;
+using System;
 
-public class Estudiante : MonoBehaviour
+namespace packagePersona
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Serializable]
 
-    // Update is called once per frame
-    void Update()
+    public class Estudiante : Persona
     {
-        
+        private string codeE;
+        private string nameECarrera;
+
+        public Estudiante()
+        {
+        }
+
+        public Estudiante(string codeE, string nameECarrera, string nameP, string mailP, string dirP)
+            :base(nameP, mailP, dirP)
+        {
+            this.codeE = codeE;
+            this.nameECarrera = nameECarrera;
+        }
+
+        public string CodeE { get => codeE; set => codeE = value; }
+        public string NameECarrera { get => nameECarrera; set => nameECarrera = value; }
     }
 }

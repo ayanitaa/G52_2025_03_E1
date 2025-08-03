@@ -21,5 +21,9 @@ namespace packagePersona
             this.mailP = mailP;
             this.dirP = dirP;
         }
+
+        public string NameP { get => nameP; set => nameP = value; }
+        public string MailP { get => mailP; set => mailP = value; }
+        public string DirP { get => dirP; set => dirP = value; }
     }
 }
