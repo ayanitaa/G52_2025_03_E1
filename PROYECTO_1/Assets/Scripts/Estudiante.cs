@@ -8,7 +8,7 @@ namespace packagePersona
     public class Estudiante : Persona
     {
         private string codeE;
-        private string nameECarrera;
+        private string nameCarreraE;
 
         public Estudiante()
         {
@@ -18,10 +18,10 @@ namespace packagePersona
             :base(nameP, mailP, dirP)
         {
             this.codeE = codeE;
-            this.nameECarrera = nameECarrera;
+            this.nameCarreraE = nameECarrera;
         }
 
         public string CodeE { get => codeE; set => codeE = value; }
-        public string NameECarrera { get => nameECarrera; set => nameECarrera = value; }
+        public string NameECarrera { get => nameCarreraE; set => nameCarreraE = value; }
     }
 }
