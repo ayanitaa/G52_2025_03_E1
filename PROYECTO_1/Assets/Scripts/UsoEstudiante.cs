@@ -1,7 +1,8 @@
-using UnityEngine;
-using System;
 using packagePersona;
+using packagePunto2D;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class UsoEstudiante : MonoBehaviour
 {
@@ -24,7 +25,16 @@ public class UsoEstudiante : MonoBehaviour
         {
              Debug.Log ("Name "+ListaE [i].NameP + "Carrera "+ListaE[i].NameECarrera);
         }
-    }
+
+        Utilidades.GuardarEstudiantes(ListaE, "estudiantes.json");
+        List<Punto2D> puntos = new List<packagePunto2D.Punto2D>
+        {
+           new Punto2D(1.5, 2.3),
+           new Punto2D(9.6, 2.0)
+
+        };
+        // Guardar los puntos en un archivo JSON
+        Utilidades.GuardarPuntos(puntos, "puntos.json");
 
 
     // Update is called once per frame
@@ -32,4 +42,5 @@ public class UsoEstudiante : MonoBehaviour
         {
 
         }
+    }
 }
