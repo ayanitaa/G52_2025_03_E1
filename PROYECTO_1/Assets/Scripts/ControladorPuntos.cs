@@ -39,7 +39,7 @@ public class ControladorPuntos : MonoBehaviour
             Utilidades.GuardarJSON(listaPuntos, nombreArchivo);
             Debug.Log($"Punto ({x}, {y}) agregado y guardado.");
 
-            // Limpiar campos
+            
             inputX.text = "";
             inputY.text = "";
         }
