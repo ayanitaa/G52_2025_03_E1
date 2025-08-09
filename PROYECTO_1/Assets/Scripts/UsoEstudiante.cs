@@ -1,46 +1,44 @@
-using packagePersona;
-using packagePunto2D;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using packagePersona;  
+using packagePunto2D; 
 
 public class UsoEstudiante : MonoBehaviour
 {
+    
+    [Header("Datos del nuevo estudiante")]
+    public string codigo;
+    public string carrera;
+    public string nombre;
+    public string correo;
+    public string direccion;
 
-    List<Estudiante> ListaE = new List<Estudiante>();
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private List<Estudiante> listaEstudiantes = new List<Estudiante>();
+    private string nombreArchivo = "estudiantes.json";
+
+    
     void Start()
     {
-        Estudiante e1 = new Estudiante("2025_23", "Ingeniería Multimedia", "David Castro", "dacastro@uao.edu.co",
-            "carrera 24");
-
-        Estudiante e2 = new Estudiante("2235319", "Ingeniería Multimedia", "Ayana Salazar", "ayana.salazar@uao.edu.co",
-            "carrera 99b");
-
-        ListaE.Add(e1);
-        ListaE.Add(e2);
-    
-
-    for (int i = 0; i < ListaE.Count; i++)
+        var datosCargados = Utilidades.CargarJSON<List<Estudiante>>(nombreArchivo);
+        if (datosCargados != null)
         {
-             Debug.Log ("Name "+ListaE [i].NameP + "Carrera "+ListaE[i].NameECarrera);
+            listaEstudiantes = datosCargados;
+            Debug.Log($"Se cargaron {listaEstudiantes.Count} estudiantes.");
         }
-
-        Utilidades.GuardarEstudiantes(ListaE, "estudiantes.json");
-        List<Punto2D> puntos = new List<packagePunto2D.Punto2D>
+        else
         {
-           new Punto2D(1.5, 2.3),
-           new Punto2D(9.6, 2.0)
-
-        };
-        // Guardar los puntos en un archivo JSON
-        Utilidades.GuardarPuntos(puntos, "puntos.json");
-
-
-    // Update is called once per frame
-    void Update()
-        {
-
+            Debug.Log("No se encontraron estudiantes previos, lista vacía.");
         }
+    }
+
+    // Método para agregar un estudiante nuevo
+    public void AgregarEstudiante()
+    {
+        Estudiante nuevo = new Estudiante(codigo, carrera, nombre, correo, direccion);
+
+        listaEstudiantes.Add(nuevo);
+        Utilidades.GuardarJSON(listaEstudiantes, nombreArchivo);
+
+        Debug.Log($"Estudiante {nombre} agregado y guardado.");
     }
 }
